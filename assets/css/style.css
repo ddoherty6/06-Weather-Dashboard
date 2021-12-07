@@ -1,9 +1,20 @@
 body {
     font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 header {
     text-align: center;
+    color: white;
+    background-color: blue;
+    height: 75px;
+    
+}
+
+h1 {
+    padding: 20px;
+    margin: 0;
 }
 
 main {
@@ -11,23 +22,81 @@ main {
 }
 
 .search-col {
-    padding: 1%;
-    margin: 1%;
+    margin: .5%;
+    flex: 1 1 0;
+}
+
+form {
+    padding-bottom: 1%;
+    border-bottom: 1px solid black;
+}
+
+form h2 {
+    margin: 0;
+    font-size: xx-large;
+}
+
+form button {
+    color: white;
+    background-color: powderblue;
 }
 
 input {
     width: 100%;
+    margin: 2% 0 2% 0;
+    padding: 3% 0 3% 0;
 }
 
 button {
     width: 100%;
+    margin: 2% 0 2% 0;
+    padding: 2.5% 0 2.5% 0;
+    background-color: gray;
+}
+
+.city-selector {
+    padding-top: 2%;
+}
+
+.forecast-col {
+    margin: .5%;
+    flex: 4 4 0;
 }
 
 .today {
     border: 1px solid black;
-    padding: 2%;
+    padding: 1%;
+
+}
+
+.forecast-col h3 {
+    margin: 2% 0 1% 0;
 }
 
 .five-day {
     display: flex;
 }
+
+article {
+    flex: 1 1 0;
+    background-color: darkblue;
+    color: white;
+    margin: 0 2% 0 2%;
+    padding: .5%;
+}
+
+.day-one {
+    margin-left: 0;
+}
+
+.day-five {
+    margin-right: 0;
+}
+
+article h4 {
+    font-size: x-large;
+    margin: 0;
+}
+
+
+
