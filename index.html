@@ -10,14 +10,14 @@
 
 <body>
 
-    <header>Weather Dashboard</header>
+    <header><h1>Weather Dashboard</h1></header>
 
     <main>
-        <div>
+        <div class="search-col">
             <form>
-                <h1>Search for a City:</h1>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-                <button></button>
+                <h2>Search for a City:</h2>
+                <input name="" id="" cols="30" rows="10"></input>
+                <button>Search</button>
             </form>
             <div class="city-selector">
                 <button>San Diego</button>
@@ -28,15 +28,51 @@
             </div>
         </div>
 
-        <div>
-            <section class="today"></section>
-            <section class="5-day">
-                <h3>5-Day Forecast</h3>
-                <article class="1"></article>
-                <article class="2"></article>
-                <article class="3"></article>
-                <article class="4"></article>
-                <article class="5"></article>
+        <div class="forecast-col">
+            <section class="today">
+                <h2>Atlanta</h2>
+                <p>Temp:</p>
+                <p>Wind:</p>
+                <p>Humidity:</p>
+                <p>UV Index:</p>
+            </section>
+            <h3>5-Day Forecast</h3>
+            <section class="five-day">
+                <article class="1">
+                    <h4>10/10/1010</h4>
+                    <img src="./assets/openweathermap-api-icons/icons/10d.png">
+                    <p>Temp:</p>
+                    <p>Wind:</p>
+                    <p>Humidity:</p>
+                </article>
+                <article class="2">
+                    <h4>10/10/1010</h4>
+                    <img src="./assets/openweathermap-api-icons/icons/10d.png">
+                    <p>Temp:</p>
+                    <p>Wind:</p>
+                    <p>Humidity:</p>
+                </article>
+                <article class="3">
+                    <h4>10/10/1010</h4>
+                    <img src="./assets/openweathermap-api-icons/icons/10d.png">
+                    <p>Temp:</p>
+                    <p>Wind:</p>
+                    <p>Humidity:</p>
+                </article>
+                <article class="4">
+                    <h4>10/10/1010</h4>
+                    <img src="./assets/openweathermap-api-icons/icons/10d.png">
+                    <p>Temp:</p>
+                    <p>Wind:</p>
+                    <p>Humidity:</p>
+                </article>
+                <article class="5">
+                    <h4>10/10/1010</h4>
+                    <img src="./assets/openweathermap-api-icons/icons/10d.png">
+                    <p>Temp:</p>
+                    <p>Wind:</p>
+                    <p>Humidity:</p>
+                </article>
             </section>
         </div>
     </main>    

@@ -1,0 +1,33 @@
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+}
+
+.search-col {
+    padding: 1%;
+    margin: 1%;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+}
+
+.today {
+    border: 1px solid black;
+    padding: 2%;
+}
+
+.five-day {
+    display: flex;
+}
