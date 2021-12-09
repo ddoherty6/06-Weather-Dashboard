@@ -31,7 +31,7 @@ form {
     border-bottom: 1px solid black;
 }
 
-form h2 {
+.search-col h2 {
     margin: 0;
     font-size: xx-large;
 }
