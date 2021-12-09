@@ -7,7 +7,7 @@ body {
 header {
     text-align: center;
     color: white;
-    background-color: blue;
+    background-image: linear-gradient(to right, #6EB4FF, #000066);
     height: 75px;
     
 }
@@ -36,9 +36,15 @@ form h2 {
     font-size: xx-large;
 }
 
-form button {
+.search-button {
     color: white;
-    background-color: powderblue;
+    background-color: #6EB4FF;
+}
+
+.search-button:hover {
+    background-color: #000066;
+
+    ;
 }
 
 input {
@@ -49,9 +55,18 @@ input {
 
 button {
     width: 100%;
+    border: none;
     margin: 2% 0 2% 0;
     padding: 2.5% 0 2.5% 0;
-    background-color: gray;
+    background-color: lightgray;
+    border-radius: 5px;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+}
+
+button:hover {
+    background-color: #AAAAAA;
+
 }
 
 .city-selector {
@@ -63,14 +78,25 @@ button {
     flex: 4 4 0;
 }
 
+img { 
+    width: 40px;
+    background-color: white;
+    border-radius: 20px;
+}
+
 .today {
     border: 1px solid black;
     padding: 1%;
+}
 
+.today h2 {
+    display: flex;
+    font-size: xx-large;
 }
 
 .forecast-col h3 {
     margin: 2% 0 1% 0;
+    vertical-align: middle;
 }
 
 .five-day {
@@ -79,7 +105,7 @@ button {
 
 article {
     flex: 1 1 0;
-    background-color: darkblue;
+    background-color: #334257;
     color: white;
     margin: 0 2% 0 2%;
     padding: .5%;
