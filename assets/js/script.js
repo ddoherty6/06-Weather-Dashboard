@@ -1,9 +1,5 @@
 buttonsLoadedFromStorage = false; // affects behavior of buttonGenerator() when page is loaded
 
-var url = "http://openweathermap.org/img/w/10d.png";
-
-//fetch(url).then(response, function())
-
 var loadButtons = function() { // loads buttons from previous sesh
     var numberOfButtons = localStorage.getItem("number-of-buttons");
 
@@ -30,8 +26,68 @@ var saveButtons = function(currentButtons) {
     }
 }
 
-var getWeather = function() {
+var getLatLon = function() {
     console.log(localStorage.getItem("current-city"));
+    var currentCity = localStorage.getItem("current-city");
+
+    todayURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&appid=33b7f578b3569767fb31590e23e0cec1";
+
+    fetch(todayURL).then(function(response) {
+
+        response.json().then(function(data) {
+
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
+
+            console.log(lat);
+            console.log(lon);
+            
+            getWeather(currentCity, lat,lon);
+        });
+    });
+
+    
+}
+
+var getWeather = function(currentCity, lat, lon) {
+
+    forecastURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exlcude=current,min&appid=33b7f578b3569767fb31590e23e0cec1";
+
+    fetch(forecastURL).then(function(response) {
+
+        response.json().then(function(data) {
+            console.log(data);
+            var date = data.current.dt;
+            var icon = data.current.weather[0].icon;
+            var temp = data.current.temp;
+            var wind = data.current.wind_speed;
+            var humidity = data.current.humidity;
+            var UVindex = data.current.uvi
+
+            drawTodayWeather(currentCity, date, icon, temp, wind, humidity, UVindex);
+            drawForecast(data.daily); // pass array to the drawForecast() function
+        });
+    });
+}
+
+var drawTodayWeather = function(city, date, icon, temp, wind, humidity, UVindex) {
+    console.log(city);
+    console.log(date);
+    console.log(icon);
+    console.log(temp);
+    console.log(wind);
+    console.log(humidity);
+    console.log(UVindex);
+
+
+
+}
+
+var drawForecast = function(forecast) {
+    console.log(forecast);
+
+
+
 }
 
 var buttonGenerator = function(inputText) { // adds a button to the page for searched city if it is not already added
@@ -64,7 +120,7 @@ var buttonGenerator = function(inputText) { // adds a button to the page for sea
 }
 
 loadButtons();
-getWeather();
+getLatLon();
 
 var searchButtonHandler = function(event) {
    
@@ -72,7 +128,7 @@ var searchButtonHandler = function(event) {
 
     saveCurrentCity(inputText);
     buttonGenerator(inputText);
-    getWeather(inputText);
+    getLatLon(inputText);
 }
 
 var historyButtonHandler = function(event) {
@@ -81,9 +137,9 @@ var historyButtonHandler = function(event) {
         return;
     }
 
-    saveCurrentCity(event.target.innerText); // set current-city in localStorage so getWeather can pull it
+    saveCurrentCity(event.target.innerText); // set current-city in localStorage so getLatLon can pull it
 
-    getWeather();
+    getLatLon();
 
 }
 
