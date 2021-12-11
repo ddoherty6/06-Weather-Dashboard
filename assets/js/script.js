@@ -1,5 +1,9 @@
 buttonsLoadedFromStorage = false; // affects behavior of buttonGenerator() when page is loaded
 
+if (!localStorage.getItem("current-city")) { //set city to Atlanta if no current city in loclaStorage - need to display something
+    localStorage.setItem("current-city", "Atlanta");
+}
+
 var loadButtons = function() { // loads buttons from previous sesh
     var numberOfButtons = localStorage.getItem("number-of-buttons");
 
@@ -26,7 +30,7 @@ var saveButtons = function(currentButtons) {
     }
 }
 
-var getLatLon = function() {
+var getLatLon = function() { // uses /weather endpoint to get lat and lon for given city, feeds to getWeather() func
     console.log(localStorage.getItem("current-city"));
     var currentCity = localStorage.getItem("current-city");
 
@@ -68,23 +72,69 @@ var getWeather = function(currentCity, lat, lon) {
             drawForecast(data.daily); // pass array to the drawForecast() function
         });
     });
+
 }
 
 var drawTodayWeather = function(city, date, icon, temp, wind, humidity, UVindex) {
     console.log(city);
     console.log(date);
+
+    var cityDateEl = document.querySelector("#today-city-date");
+    cityDateEl.insertAdjacentHTML("afterbegin", city  + " (" + date + ")");
+
     console.log(icon);
+    var iconEl = document.querySelector("#today-icon");
+    iconEl.insertAdjacentHTML("afterbegin", "<img src='./assets/openweathermap-api-icons/icons/" + icon + ".png'>");
+
     console.log(temp);
+    var tempEl = document.querySelector("#today-temp");
+    tempEl.insertAdjacentHTML("afterbegin", temp);
+
     console.log(wind);
+    var windEl = document.querySelector("#today-wind");
+    windEl.insertAdjacentHTML("afterbegin", wind);
+
     console.log(humidity);
+    var humidityEl = document.querySelector("#today-humidity");
+    humidityEl.insertAdjacentHTML("afterbegin", humidity);
+
     console.log(UVindex);
-
-
-
+    var UVindexEL = document.querySelector("#today-UVindex");
+    UVindexEL.insertAdjacentHTML("afterbegin", UVindex);
 }
 
 var drawForecast = function(forecast) {
     console.log(forecast);
+
+    fiveDayEl = document.querySelector("#five-day");
+    forcastArticles = fiveDayEl.children;
+    
+    for (var i = 0; i < 5; i++) { // inserts the date in forecast articles
+        for (var index = 0; forcastArticles.length; index++) {
+            forecastArticles[index].children[i].insertAdacentHTML("afterend", " date");
+        }
+        i++;
+
+        for (var index = 0; index < forcastArticles.length; index++) {
+            forecastArticles[index].children[i].insertAdjacentHTML("afterend", " icon");
+        }
+        i++;
+
+        for (var j = 0; index < forcastArticles.length; index++) {
+            forecastArticles[index].children[i].insertAdjacentHTML("afterend", " temp");
+        }
+        i++;
+
+        for (var index = 0; index < forcastArticles.length; index++) {
+            forecastArticles[index].children[i].insertAdjacentHTML("afterend", " wind");
+        }
+        i++;
+
+        for (var index = 0; index < forcastArticles.length; index++) {
+            forecastArticles[index].children[i].insertAdjacentHTML("afterend", "humidity");
+        }
+    }
+
 
 
 
