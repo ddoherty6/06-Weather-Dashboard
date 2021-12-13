@@ -27,7 +27,6 @@ var saveButtons = function(currentButtons) {
 }
 
 var getLatLon = function(currentCity) { // uses /weather endpoint to get lat and lon for given city, feeds to getWeather() func
-    console.log(currentCity);
 
     todayURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&appid=33b7f578b3569767fb31590e23e0cec1";
 
@@ -36,8 +35,7 @@ var getLatLon = function(currentCity) { // uses /weather endpoint to get lat and
             response.json().then(function(data) {
                 var lat = data.coord.lat;
                 var lon = data.coord.lon;
-                console.log(lat);
-                console.log(lon);
+
                 getWeather(currentCity, lat,lon);
             });
         } else { // if city does not exit, exit process, alert user
@@ -72,36 +70,28 @@ var getWeather = function(currentCity, lat, lon) { // uses lat and lon from getL
 }
 
 var drawTodayWeather = function(city, date, icon, temp, wind, humidity, UVindex) { //assign info to 'today' section
-    console.log(city);
-    console.log(date);
 
     var cityDateEl = document.querySelector("#today-city-date");
     cityDateEl.innerText = city  + " (" + formatDate(date) + ")";
 
-    console.log(icon);
     var iconEl = document.querySelector("#today-icon");
     iconEl.innerHTML = "<img src='https://openweathermap.org/img/w/" + icon + ".png'>";
 
-    console.log(temp);
     var tempEl = document.querySelector("#today-temp");
     tempEl.innerText = temp + "°F";
 
-    console.log(wind);
     var windEl = document.querySelector("#today-wind");
     windEl.innerText = wind + " MPH";
 
-    console.log(humidity);
     var humidityEl = document.querySelector("#today-humidity");
     humidityEl.innerText = humidity + " %";
 
-    console.log(UVindex);
     var UVindexEL = document.querySelector("#today-UVindex");
     UVindexEL.innerText = UVindex;
     setUVcolor(UVindex, UVindexEL); // sets css class of UVindexEl
 }
 
 var drawForecast = function(forecast) { // assign info to the forecast articles
-    console.log(forecast);
 
     fiveDayEl = document.querySelector("#five-day"); // select entire forecast div
     forecastArticles = fiveDayEl.children; // create array of forecast articles
