@@ -80,8 +80,6 @@ button:hover {
 
 img { 
     width: 40px;
-    background-color: white;
-    border-radius: 20px;
 }
 
 .today {
@@ -92,6 +90,39 @@ img {
 .today h2 {
     display: flex;
     font-size: xx-large;
+}
+
+.today p {
+    font-size: larger;
+}
+
+.today p span {
+    padding: .5% 1.5% .5% 1%;
+    border-radius: 10px;
+}
+
+.uv-low {
+    background-color: green;
+    color: white;
+}
+
+.uv-mod {
+    background-color: yellow;
+    color: black;
+}
+
+.uv-high {
+    background-color: orange;
+    color: black;
+}
+
+.uv-vryHigh {
+    background-color: red;
+}
+
+.uv-extreme {
+    background-color: violet;
+    color: black;
 }
 
 .forecast-col h3 {
@@ -123,6 +154,3 @@ article h4 {
     font-size: x-large;
     margin: 0;
 }
-
-
-
