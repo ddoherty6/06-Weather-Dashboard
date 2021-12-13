@@ -43,23 +43,17 @@ var getLatLon = function(currentCity) { // uses /weather endpoint to get lat and
         } else { // if city does not exit, exit process, alert user
             alert("There was a server error. Please check the spelling of the city you entered.");
         }
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
-
-    
+    });    
 }
 
-var getWeather = function(currentCity, lat, lon) {
+var getWeather = function(currentCity, lat, lon) { // uses lat and lon from getLatLon() to access /onecall endpoint
 
     forecastURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=33b7f578b3569767fb31590e23e0cec1";
-    console.log(forecastURL);
 
     fetch(forecastURL).then(function(response) {
 
         response.json().then(function(data) {
-            console.log(data);
+            
             var date = data.current.dt;
             var icon = data.current.weather[0].icon;
             var temp = data.current.temp;
@@ -67,7 +61,7 @@ var getWeather = function(currentCity, lat, lon) {
             var humidity = data.current.humidity;
             var UVindex = data.current.uvi
 
-            drawTodayWeather(currentCity, date, icon, temp, wind, humidity, UVindex);
+            drawTodayWeather(currentCity, date, icon, temp, wind, humidity, UVindex); // send groomed data to drawTodayWeather()
             drawForecast(data.daily); // pass array to the drawForecast() function
         });
     });
@@ -177,7 +171,7 @@ var formatDate = function(unixDate) { // convert unix date to MM/DD/YYYY
     return month + "/" + date.getDate() + "/" + date.getFullYear();
 }
 
-var setUVcolor = function(UVindex, UVindexEl) {
+var setUVcolor = function(UVindex, UVindexEl) { // sets css class baes on UV Index value
 
     if (0 <= UVindex && UVindex < 3) { // low - green
 
@@ -225,8 +219,8 @@ var buttonGenerator = function(inputText) { // adds a button to the page for sea
     }
 
     var newButton = document.createElement("button"); // add button of searched city
-    newButton.innerText = inputText;
-    citySelectorEl.appendChild(newButton);
+    newButton.innerText = inputText;                  //
+    citySelectorEl.appendChild(newButton);            //
 
     if (buttonsLoadedFromStorage === true) { 
 
